@@ -1,0 +1,18 @@
+body { margin: 10px; }
+
+#the-grid { }
+
+#the-grid table {
+    border-spacing: 1px;
+    margin: 0 auto;
+    background-color: black;
+}
+
+td.cell {
+    min-width: 25px;
+    height: 25px;
+    background-color: white;
+    padding: 0px;
+}
+
+.red { background-color: red !important; }
