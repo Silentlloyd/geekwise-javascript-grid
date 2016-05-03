@@ -1,28 +1,5 @@
 
 /**
- * This function returns the HTML for a <table>
- * that has `numCols` columns and `numRows` rows.
- */
-function createTableHTML(numCols, numRows) {
-
-    var begin  = '<table>';
-    var middle = '';
-    var end    = '</table>';
-
-    for (var r = 0; r < numRows; r++) {
-        middle += '<tr class="row">';
-
-        for (var c = 0; c < numCols; c++) {
-            middle += '<td class="cell"></td>';
-        }
-
-        middle += '</tr>';
-    }
-
-    return begin + middle + end;
-}
-
-/**
  * This function returns a Table element
  * that has `numCols` columns and `numRows` rows.
  */
@@ -44,50 +21,51 @@ function createTableElement(numCols, numRows) {
     }
     return table;
 }
-
-/**
- * This function overwrites the onclick event handler
- * to log some message.
- */
-function addConsoleLogOnClickEvent(element, number) {
-    element.onclick = function () {
-        console.log("CLICKED:", number);
-    };
-}
-
-function addAndRemoveClass(element, classname, timer) {
-    element.className += ' ' + classname;
-    var t = setTimeout(function () {
-        element.className = element.className.replace(classname, '');
-        t = 0;
-    }, timer);
-}
-
-
-/**
- * This function loops through all `td` elements
- * of the given `table` and adds a method 
- * to the cell's click event.
- */
-function addSomeEvents(table) {
-    var cells = table.getElementsByTagName('td');
-    for (var c = 0; c < cells.length; c++) {
-        addConsoleLogOnClickEvent(cells[c], c + 1);
-        cells[c].onmouseover = function() {
-            addAndRemoveClass(this, 'red', 1000);
-        };
-    }
-}
-
-
 // select our target DIV
 var theGrid = document.getElementById("the-grid");
 
 // create our grid table
-var theGridTable = createTableElement(25, 15);
+var Table = createTableElement(25, 15);
 
 // append our grid table to the target DIV
-theGrid.appendChild(theGridTable);
+theGrid.appendChild(Table);
 
-// attach some event handler to our grid's cells
-addSomeEvents(theGridTable);
+var numCols = 25;
+var numActivated = 25;
+var numRows = 15;
+
+function init() {
+
+  for(i=0; i < 25; i++) {
+    var randX = Math.floor(Math.random() * numCols);
+    var randY = Math.floor(Math.random() * numRows);
+    activate(randX,randY);
+  }
+}
+
+function activate(x,y) {
+  Table.rows[y].cells[x].classList.add('activated');
+}
+
+function deactivate(x,y) {
+  Table.rows[y].cells[x].classList.remove('activated');
+}
+function changeState(table) {
+  var newGrid = [];
+
+  var tableCells = table.getElementsByTagName('td');
+  for(i=0; i < tableCells.length; i++) {
+    var cell = tableCells[i];
+  }
+}
+init();
+setInterval(function(){
+  changeState(Table);
+}, 500);
+
+
+// Table.rows[1].cells[1].style.background="black";
+//initailize grid
+//add random cells
+//interate cells & toggle activation
+//do everything within a half second

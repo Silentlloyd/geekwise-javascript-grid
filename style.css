@@ -11,8 +11,13 @@ body { margin: 10px; }
 td.cell {
     min-width: 25px;
     height: 25px;
-    background-color: white;
+    background: white;
     padding: 0px;
 }
 
-.red { background-color: red !important; }
+.red { background-color: red !important;
+}
+
+.activated{
+  background:red !important;
+}
