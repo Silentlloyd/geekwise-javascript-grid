@@ -15,9 +15,20 @@ td.cell {
     padding: 0px;
 }
 
-.red { background-color: red !important;
+.color-0{
+  background:#FF0000 !important;
 }
 
+.color-1{
+  background:#00FF00 !important;
+}
+
+.color-2{
+  background:#0000FF !important;
+}
+.deactivate{
+  background:blue!important;
+}
 .activated{
   background:red !important;
 }
